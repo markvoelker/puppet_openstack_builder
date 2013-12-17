@@ -1,25 +1,29 @@
-control-server: controller
-control-server01: controller
-control-server02: controller
-control-server03: controller
+build01: build
+control01: all_in_one
+compute01: all_in_one
 
-compute-server: compute
-compute-server01: compute
-compute-server02: compute
-compute-server03: compute
+#control-server: controller
+#control-server01: controller
+#control-server02: controller
+#control-server03: controller
 
-all-in-one: all_in_one
+#compute-server: compute
+#compute-server01: compute
+#compute-server02: compute
+#compute-server03: compute
 
-build-server: build
+#all-in-one: all_in_one
 
-cache: cache
+#build-server: build
 
-load-balancer01: load_balancer
-load-balancer02: load_balancer
+#cache: cache
 
-swift-proxy01: swift_proxy
-swift-proxy02: swift_proxy
+#load-balancer01: load_balancer
+#load-balancer02: load_balancer
 
-swift-storage01: swift_storage
-swift-storage02: swift_storage
-swift-storage03: swift_storage
+#swift-proxy01: swift_proxy
+#swift-proxy02: swift_proxy
+
+#swift-storage01: swift_storage
+#swift-storage02: swift_storage
+#swift-storage03: swift_storage

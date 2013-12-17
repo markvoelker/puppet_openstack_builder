@@ -1,0 +1,33 @@
+#
+# the 3 node ha
+#
+roles:
+  build:
+    classes:
+      - coe::base
+      - naginator::compute_target
+      - openstack::swift::proxy
+      - openstack::swift::storage_node
+      - openstack-ha::load-balancer
+      - cinder::setup_test_volume
+    class_groups:
+      - build
+      - controller
+      - compute
+      - network_controller
+      - provider_network_controller
+      - test_file
+  all_in_one:
+    classes:
+      - coe::base
+      - naginator::compute_target
+      - openstack::swift::proxy
+      - openstack::swift::storage_node
+      - openstack-ha::load-balancer
+      - cinder::setup_test_volume
+    class_groups:
+      - controller
+      - compute
+      - network_controller
+      - provider_network_controller
+      - test_file
