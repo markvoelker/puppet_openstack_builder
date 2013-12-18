@@ -1,0 +1,26 @@
+#
+# Compressed (3-node) HA
+#
+roles:
+  build:
+    classes:
+      - coe::base
+    class_groups:
+      - test_file
+      - build
+  compressed_ha:
+    classes:
+      - coe::base
+      - naginator::control_target
+      - naginator::compute_target
+      - coe::network::interface
+      - openstack-ha::load-balancer
+#      - openstack::swift_proxy
+#      - openstack::swift_storage_node
+#      - cinder::setup_test_volume
+    class_groups:
+      - controller
+      - compute
+      - provider_network_controller
+      - test_file
+      - ceph_all
