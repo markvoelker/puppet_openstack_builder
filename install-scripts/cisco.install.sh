@@ -15,10 +15,11 @@ export install_type=deb
 # Add Cisco repo
 cat > /etc/apt/sources.list.d/cisco-openstack-mirror_havana.list<<EOF
 # cisco-openstack-mirror_havana
-deb http://openstack-repo.cisco.com/openstack/cisco havana main
-deb-src http://openstack-repo.cisco.com/openstack/cisco havana main
+deb http://openstack-repo.cisco.com/openstack/cisco havana-proposed main
+deb-src http://openstack-repo.cisco.com/openstack/cisco havana-proposed main
 EOF
 
+# Cisco repo signing key
 echo "-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
@@ -49,6 +50,70 @@ h1jP1GXFUIQDbcznrR2MQDy5fNt678HcIqMwVp2CJz/2jrZlbSKfMckdpbiWNns/
 xKyLYs5m34d4a0it6wsMem3YCefSYBjyLGSd/kCI/CgOdGN1ZY1HSdLmmjiDkQPQ
 UcXHbA==
 =v6jg
+-----END PGP PUBLIC KEY BLOCK-----" | apt-key add -
+
+# CIS repo signing key
+echo "-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+mQINBFPX7/oBEAC49i6Fg50ABTVIOxr2ZJ7vy0WqofSg3v88mAfGakMzn5LHZD5U
+cQittEe+QAt4j9fQtFiVf/BodiarBIGu9FHDHJROiwjXvaobSTnwMxyqLTkMQt3E
+tJYvEFjf980OYlSb6esgX/sG6UUikaC6uuw6w2Z2GneAX/EF8tI7VvZ/EMMSMyJV
+2jECvABLRKY0UXEaXkxtWcslxFdD6gBnQeW7rnsRjCYThelhS7MrTARMw/WQXsGb
+knNkJ4Io/55G5NFMsWGVxSwNJLtNZW1lmZJM/iaVO719Wh37SsRVC8B9etdjmDpG
+3xkjarWmX+V/pJYJg2W9fyeAPW0f1ZSDkCHiMr65AMt5SZmUUIfUgwc/KKm8JIpb
+U66H5Jyr0LNdYieqTiC+MfqLen0GnpB605hmPDWn2n5gmpH1LJ5B7CM5i38bspne
+Kb2VD3dQfhU28E07gRip0G8tDQBl1qVOmOPP0pAThSiTzW9XgkI6kqMvdDkyZwAP
+ScKYi3pf9VbwIipe+vxu02y0R2zYMg5g+TLtf/mUJO9lUd1DgeOdHzu/ihvhtEj8
+MGi348ZxRuA8rxB/uh7tqlf/881qa24trDeDhOgGvgnNkD6NhTu6BJN0tj1xIQwo
+3iZnjUQyg+sG4fDp/UHciD0U4sg3uZNKT7ia0Vp4X2v248eQZgAggyxKOQARAQAB
+tA5jaXMgcmVwb3NpdG9yeYkCOAQTAQIAIgUCU9fv+gIbLwYLCQgHAwIGFQgCCQoL
+BBYCAwECHgECF4AACgkQYk3UwOoo4CPJAhAArhbqf2Uo1mq/1OI/bpJTplO5uymz
+tO+UKPtix1Aw6A1HeiZaOJssXYzr7JfEfm0z90J8oe8Irxp3PAX0/kwxy6N6bLrS
++VvffmyZWOZgidox4XhZ75mf5F5pnHbPgxffd7YBVUqxTnfMpN9q3dvwSpcVVge8
+0mo4EiWpPA2MugdnTZ+/UHCpIYbKVQJCC5iibRJimrpRTvcUNz4j40tibIilkSbp
+O3TeOpCf0TCvGgsLm/8Q00+z2TKgzVlkO9QxQlldBDVlokt4dWAGQM8HwTdEX00C
+jB1BefjlyTgxV3B4cZSiybANQxSgS87t+HjIN4OMGnlevJ8ubnrqSWWle2UAVxNF
+ZBN+EeOVN1EwUqkmpgn7snTFJPR9wetJ6U0tn3y4zzswEKGIxvBSVexyCM/uiyvl
+jW7aX2VO+Dr32/zlfW36DG8KdNqGu3GhGVxKlMatHkcAB9M/XmvX9BGc1SsF4+kL
+QvwymnHszgHlm1nCxQ5Q+jUIacbQJzHW4jj2pd4CGvi68Sw3C6A6m+N1nlW7JDbC
+N1S6CU9LtP6QpTHlRiM6alEPtsv+ZFlbloS9h2USh7U9GTYyivQo6kITJcmMuqS7
+XYouHswDeFr5aPU54yFReZWPdEZH/RoK3EYZF44k2VYqe+ee+sSyNcCZyFVvUe3y
+nSz9O6RHEd3Wyke5BA0EU9fv+hAQAJFs8DQy1Mo90AEtEej5c/7shRH9Hfi4DabD
+jlXIOv5UNqUUT4eOWypAPs7b1xy+IqlHldNbvaHXNj2oVTJpm70/SNFwm242GNVe
+xNbf7bywNt0T3rdUWq1bznuXgaPXwVggc9b7coPaFex9RBfGY1sfVxmOB1TKrkIw
+V4FVYCs6w1p9UpPKqmu3dMwO1qbW3gDBnJRoCvq3QB/RhjAixQAthkkKZeVfi7bK
+LrxpOXi8YFqEM5MepPit6ko54o4hpdmfMu8Z4qUQbGuo640oLTmdrb23dB6UGI3k
+zfUInb7mrIYYa3Q4DzOkhBECmkdpIjpU7AneoUMNDOjuywM0jN2mRsCotpc7udKh
+zBiq6SUIdYnmppiv1IaUNnpoheAM4O9aLv+/+lYclziTyPePe8v1qfbqgAm727j2
+aWN3UDiSfJbuvPn2xmyefIrhcSTAxRYh7vuWVi7spqY00D6hMJxRgi5/d4iVjw42
+PfcgeIta1vWZyURAHGuqMXSwRT7OeQLgiWv7QVPgkaBG/iPgE3BJadtcu5MDztH8
+kLQbQZzMWfuaSku9PgXC9kGOI3M5SEoZ0wFskWA5n8UuS9FzS2hEWXCSyY89Mxx9
+oWWv4HOFvsvjjjAngS/0MMOjGT+xfzjksxZUhY4Pv9Nzo8yqIHWXs7rkGxuwblgA
+DjsaNaTvAAMFD/9L8oU12UEvLDjuFCqOMXMky7U2PZql3iYlj3airQ77lQmi7cm8
+siJ+QWeG+3CPa4z1al6mUxQLeWraYzd48t3JASB7Vw7J+55azTbEIeh8+3AsrCH1
+6e353fR03P843zQbER7lFyWPWjHjjuQvBqmfhQbJmyZqlChzCQcsdRhq01RS3XZM
+56mt4AgsHEj3UYf5iqUC2IhqrsA02yMguCoL0ynS+aG/QxdAbomZHrCaNBApHpnK
+DhUE7Gf2bTNxFjVrDu/NE5IpmiqnWdRWFUkjXRb+DGv5aRk0dKhIS2WAWPhFJaVA
+RnKOqx5fCtCahygpNf6ZlvcT8rP84qVvEYE3wg7EN6DQNvv2efVK/VRqXE+zOjpy
+D3ub4NMqHIQbeHdD+TBJ9TThmooahLIlXic/qRqpigcFawYCuEfwvaOUT5JHS22w
+Cq9NdcvAlx6hXVIQ2yDAQ/5EPa2qeMlL4IFiOFpfUjtfksDmt9OpmXwBrzIR3Xlu
+RZyVxyf5rRbQHqXJO/lMAkKez4c0WAwx+lrnZjfqFQ6NPd5xxcbRNEjYOiD7+xEe
+77xtdG16wZa2yhXx3WrL1Hz1X78oH8VjkKm8hTnwFxs44KgLIt0J5fxuYUDzX/o/
+g4RK1dfx5UX6k3690wb+VGfU0krGv4IO2B7/d2DVdimA1eMRMupPYJZnNYkCHwQY
+AQIACQUCU9fv+gIbDAAKCRBiTdTA6ijgI6z+EACh0vKdo0HKzlvLBULoNJp9Stgn
+lAZ6+GqaKGMT9T9uvv96oHckPT6YPAwGuhDB3IYY89Dr0Pa6qfsCSaUJdPkf/zXE
+6aU7jUAW6m1OaWeH7p9kl8WglZidR1a/FFR04dnZMquzJkuHjxlbp9BkjbZL+n0h
+4HBtEyjMpfwgux9RUgPj5XAeMqb3QDC9DcJCXERGGnjLvf2s9C64KeRSJTE1AksW
+/AK3RO06ikYMad00iM741cVGeSKbDnlgye2k0UobAlOak8xHgUV1WiLzi+0FSLwY
+80DogvaTbNDURbPYHULBYmXA/HjzghgsW+tvaUBDLqP+pAkjMCnwicPdnnjyOhXq
+Ag3HMxxK6XphkgxjL8kQQebdYQsrU2yhgVnkK23NskZJIJFi2vWmXCxomlYyvUeJ
+DgmQL58Ar06Flf7h23oZdMgSt12NPBIRyRHRVV2YUc1vPGwbXA53ie0GR1hNC8fI
+UZbGuBmUFfrYn8BJb4E+E4ezWhXHgrTD2JYvwBQ0+wqNZeydZnuFYqpWg0nq9VoF
+eT3MnzmkUhEeMJgRbxoruK8dmBBHfsM27YM/qqU/LmU5zf1XPigb1q0+RoN+DG99
+SO712ryTe7S15nPt/Oqxig1EREIFSgmwtyFD/lQafGVlNXfzb94iHqX2l/27r97Q
+ZFajdYXw3t7Qj6XzLw==
+=g4hY
 -----END PGP PUBLIC KEY BLOCK-----" | apt-key add -
 
 apt-get update && apt-get install -y ipmitool

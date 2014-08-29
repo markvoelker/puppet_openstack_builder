@@ -19,9 +19,9 @@
 #   will point you to the stable pocket, or you can specify the
 #   proposed pocket ('-proposed') or a snapshot ('/snapshots/h.0').
 coe::base::package_repo: cisco_repo
-openstack_repo_location: 'http://openstack-repo.cisco.com/openstack/cisco'
+openstack_repo_location: 'http://openstack-repo.cisco.com/openstack/cis'
 supplemental_repo: 'http://openstack-repo.cisco.com/openstack/cisco_supplemental'
-pocket: ''
+pocket: '-proposed'
 
 # Use the latest Puppet packages from the Cisco COI repos
 puppet::master::version: latest
